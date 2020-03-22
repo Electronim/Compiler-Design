@@ -9,7 +9,7 @@ In order to make this run on your PC, you will need to:
 ### Running
 In order to run the project:
 - open a Command Prompt in the project folder
-- type **run.sh** and hit *ENTER*
+- type **run.sh** and hit *ENTER* (or simply double-click the **run.sh** file in project folder)
 - follow the instructions from the command prompt
 
 #### Thanks!
