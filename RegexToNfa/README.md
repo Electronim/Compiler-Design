@@ -12,4 +12,10 @@ In order to run the project:
 - type **run.sh** and hit *ENTER* (or simply double-click the **run.sh** file in project folder)
 - follow the instructions from the command prompt
 
+### Input example
+![Input Example](e.g.Input.png)
+
+### Output (resulted graph) example
+![Resulted Graph Example](e.g.Graph.png)
+
 #### Thanks!
