@@ -1,0 +1,12 @@
+abcdf
+ABCDF
+S
+4
+S -> abx | c
+S -> aXbX | bXaX | $
+S -> aXbX | $
+S -> bXaX | $
+orice 
+primul
+cuvant
+altceva
