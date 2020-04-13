@@ -1,0 +1,140 @@
+Print state: 0:
+[(S -> .$), origin = 0]
+[(# -> .S), origin = 0]
+[(# -> S.), origin = 0]
+[(S -> .Sa), origin = 0]
+[(S -> S.a), origin = 0]
+
+Print state: 1:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+a is ACCEPTED
+
+Print state: 0:
+[(S -> .$), origin = 0]
+[(# -> .S), origin = 0]
+[(# -> S.), origin = 0]
+[(S -> .Sa), origin = 0]
+[(S -> S.a), origin = 0]
+
+Print state: 1:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 2:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 3:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+aaa is ACCEPTED
+
+Print state: 0:
+[(S -> .$), origin = 0]
+[(# -> .S), origin = 0]
+[(# -> S.), origin = 0]
+[(S -> .Sa), origin = 0]
+[(S -> S.a), origin = 0]
+
+Print state: 1:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 2:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 3:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 4:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 5:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+aaaaa is ACCEPTED
+
+Print state: 0:
+[(S -> .$), origin = 0]
+[(# -> .S), origin = 0]
+[(# -> S.), origin = 0]
+[(S -> .Sa), origin = 0]
+[(S -> S.a), origin = 0]
+
+Print state: 1:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 2:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+aa is ACCEPTED
+
+Print state: 0:
+[(S -> .$), origin = 0]
+[(# -> .S), origin = 0]
+[(# -> S.), origin = 0]
+[(S -> .Sa), origin = 0]
+[(S -> S.a), origin = 0]
+
+Print state: 1:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 2:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 3:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 4:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+aaaa is ACCEPTED
+
+Print state: 0:
+[(S -> .$), origin = 0]
+[(# -> .S), origin = 0]
+[(# -> S.), origin = 0]
+[(S -> .Sa), origin = 0]
+[(S -> S.a), origin = 0]
+
+Print state: 1:
+[(# -> S.), origin = 0]
+[(S -> S.a), origin = 0]
+[(S -> Sa.), origin = 0]
+
+Print state: 2:
+
+Print state: 3:
+
+Print state: 4:
+
+abbb is REJECTED
+

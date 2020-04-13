@@ -1,12 +1,11 @@
-abcdf
-ABCDF
+a
 S
-4
-S -> abx | c
-S -> aXbX | bXaX | $
-S -> aXbX | $
-S -> bXaX | $
-orice 
-primul
-cuvant
-altceva
+S
+1
+S -> Sa | $
+a
+aaa
+aaaaa
+aa
+aaaa
+abbb
