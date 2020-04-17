@@ -1,140 +1,309 @@
 Print state: 0:
-[(S -> .$), origin = 0]
 [(# -> .S), origin = 0]
-[(# -> S.), origin = 0]
-[(S -> .Sa), origin = 0]
-[(S -> S.a), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
 
 Print state: 1:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
-
-a is ACCEPTED
-
-Print state: 0:
-[(S -> .$), origin = 0]
-[(# -> .S), origin = 0]
-[(# -> S.), origin = 0]
-[(S -> .Sa), origin = 0]
-[(S -> S.a), origin = 0]
-
-Print state: 1:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(S -> a.XbX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> aX.bX), origin = 0]
 
 Print state: 2:
+[(X -> b.XaX), origin = 1]
+[(S -> aXb.X), origin = 0]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> bX.aX), origin = 1]
+[(S -> aXbX.), origin = 0]
 [(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
 
-Print state: 3:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
-
-aaa is ACCEPTED
+ab is ACCEPTED
 
 Print state: 0:
-[(S -> .$), origin = 0]
 [(# -> .S), origin = 0]
-[(# -> S.), origin = 0]
-[(S -> .Sa), origin = 0]
-[(S -> S.a), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
 
 Print state: 1:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(S -> a.XbX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> aX.bX), origin = 0]
 
 Print state: 2:
+[(X -> b.XaX), origin = 1]
+[(S -> aXb.X), origin = 0]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> bX.aX), origin = 1]
+[(S -> aXbX.), origin = 0]
 [(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
 
 Print state: 3:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(X -> a.XbX), origin = 2]
+[(X -> bXa.X), origin = 1]
+[(X -> .aXbX), origin = 3]
+[(X -> .bXaX), origin = 3]
+[(X -> .$), origin = 3]
+[(X -> aX.bX), origin = 2]
+[(X -> bXaX.), origin = 1]
+[(S -> aX.bX), origin = 0]
 
 Print state: 4:
+[(X -> b.XaX), origin = 3]
+[(X -> aXb.X), origin = 2]
+[(S -> aXb.X), origin = 0]
+[(X -> .aXbX), origin = 4]
+[(X -> .bXaX), origin = 4]
+[(X -> .$), origin = 4]
+[(X -> bX.aX), origin = 3]
+[(X -> aXbX.), origin = 2]
+[(S -> aXbX.), origin = 0]
+[(X -> bX.aX), origin = 1]
 [(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+
+abab is ACCEPTED
+
+Print state: 0:
+[(# -> .S), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
+
+Print state: 1:
+[(S -> b.XaX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> bX.aX), origin = 0]
+
+Print state: 2:
+[(X -> a.XbX), origin = 1]
+[(S -> bXa.X), origin = 0]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> aX.bX), origin = 1]
+[(S -> bXaX.), origin = 0]
+[(# -> S.), origin = 0]
+
+ba is ACCEPTED
+
+Print state: 0:
+[(# -> .S), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
+
+Print state: 1:
+[(S -> a.XbX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> aX.bX), origin = 0]
+
+Print state: 2:
+[(X -> a.XbX), origin = 1]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> aX.bX), origin = 1]
+
+Print state: 3:
+[(X -> a.XbX), origin = 2]
+[(X -> .aXbX), origin = 3]
+[(X -> .bXaX), origin = 3]
+[(X -> .$), origin = 3]
+[(X -> aX.bX), origin = 2]
+
+Print state: 4:
+[(X -> b.XaX), origin = 3]
+[(X -> aXb.X), origin = 2]
+[(X -> .aXbX), origin = 4]
+[(X -> .bXaX), origin = 4]
+[(X -> .$), origin = 4]
+[(X -> bX.aX), origin = 3]
+[(X -> aXbX.), origin = 2]
+[(X -> aX.bX), origin = 1]
 
 Print state: 5:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(X -> b.XaX), origin = 4]
+[(X -> aXb.X), origin = 1]
+[(X -> .aXbX), origin = 5]
+[(X -> .bXaX), origin = 5]
+[(X -> .$), origin = 5]
+[(X -> bX.aX), origin = 4]
+[(X -> aXbX.), origin = 1]
+[(S -> aX.bX), origin = 0]
 
-aaaaa is ACCEPTED
+Print state: 6:
+[(X -> b.XaX), origin = 5]
+[(S -> aXb.X), origin = 0]
+[(X -> .aXbX), origin = 6]
+[(X -> .bXaX), origin = 6]
+[(X -> .$), origin = 6]
+[(X -> bX.aX), origin = 5]
+[(S -> aXbX.), origin = 0]
+[(# -> S.), origin = 0]
+
+aaabbb is ACCEPTED
 
 Print state: 0:
-[(S -> .$), origin = 0]
 [(# -> .S), origin = 0]
-[(# -> S.), origin = 0]
-[(S -> .Sa), origin = 0]
-[(S -> S.a), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
 
 Print state: 1:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(S -> b.XaX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> bX.aX), origin = 0]
 
 Print state: 2:
+[(X -> a.XbX), origin = 1]
+[(S -> bXa.X), origin = 0]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> aX.bX), origin = 1]
+[(S -> bXaX.), origin = 0]
 [(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
-
-aa is ACCEPTED
-
-Print state: 0:
-[(S -> .$), origin = 0]
-[(# -> .S), origin = 0]
-[(# -> S.), origin = 0]
-[(S -> .Sa), origin = 0]
-[(S -> S.a), origin = 0]
-
-Print state: 1:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
-
-Print state: 2:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
 
 Print state: 3:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(X -> a.XbX), origin = 2]
+[(X -> .aXbX), origin = 3]
+[(X -> .bXaX), origin = 3]
+[(X -> .$), origin = 3]
+[(X -> aX.bX), origin = 2]
 
 Print state: 4:
+[(X -> b.XaX), origin = 3]
+[(X -> aXb.X), origin = 2]
+[(X -> .aXbX), origin = 4]
+[(X -> .bXaX), origin = 4]
+[(X -> .$), origin = 4]
+[(X -> bX.aX), origin = 3]
+[(X -> aXbX.), origin = 2]
+[(X -> aX.bX), origin = 1]
+[(S -> bXaX.), origin = 0]
 [(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
 
-aaaa is ACCEPTED
+baab is ACCEPTED
 
 Print state: 0:
-[(S -> .$), origin = 0]
 [(# -> .S), origin = 0]
-[(# -> S.), origin = 0]
-[(S -> .Sa), origin = 0]
-[(S -> S.a), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
 
 Print state: 1:
-[(# -> S.), origin = 0]
-[(S -> S.a), origin = 0]
-[(S -> Sa.), origin = 0]
+[(S -> b.XaX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> bX.aX), origin = 0]
 
 Print state: 2:
+[(X -> b.XaX), origin = 1]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> bX.aX), origin = 1]
 
 Print state: 3:
+[(X -> b.XaX), origin = 2]
+[(X -> .aXbX), origin = 3]
+[(X -> .bXaX), origin = 3]
+[(X -> .$), origin = 3]
+[(X -> bX.aX), origin = 2]
 
 Print state: 4:
+[(X -> b.XaX), origin = 3]
+[(X -> .aXbX), origin = 4]
+[(X -> .bXaX), origin = 4]
+[(X -> .$), origin = 4]
+[(X -> bX.aX), origin = 3]
 
-abbb is REJECTED
+bbbb is REJECTED
+
+Print state: 0:
+[(# -> .S), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
+
+Print state: 1:
+[(S -> b.XaX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> bX.aX), origin = 0]
+
+Print state: 2:
+[(X -> a.XbX), origin = 1]
+[(S -> bXa.X), origin = 0]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> aX.bX), origin = 1]
+[(S -> bXaX.), origin = 0]
+[(# -> S.), origin = 0]
+
+Print state: 3:
+[(X -> b.XaX), origin = 2]
+[(X -> aXb.X), origin = 1]
+[(X -> .aXbX), origin = 3]
+[(X -> .bXaX), origin = 3]
+[(X -> .$), origin = 3]
+[(X -> bX.aX), origin = 2]
+[(X -> aXbX.), origin = 1]
+[(S -> bX.aX), origin = 0]
+
+Print state: 4:
+[(X -> a.XbX), origin = 3]
+[(X -> bXa.X), origin = 2]
+[(S -> bXa.X), origin = 0]
+[(X -> .aXbX), origin = 4]
+[(X -> .bXaX), origin = 4]
+[(X -> .$), origin = 4]
+[(X -> aX.bX), origin = 3]
+[(X -> bXaX.), origin = 2]
+[(S -> bXaX.), origin = 0]
+[(X -> aX.bX), origin = 1]
+[(# -> S.), origin = 0]
+
+baba is ACCEPTED
+
+Print state: 0:
+[(# -> .S), origin = 0]
+[(S -> .aXbX), origin = 0]
+[(S -> .bXaX), origin = 0]
+
+Print state: 1:
+[(S -> a.XbX), origin = 0]
+[(X -> .aXbX), origin = 1]
+[(X -> .bXaX), origin = 1]
+[(X -> .$), origin = 1]
+[(S -> aX.bX), origin = 0]
+
+Print state: 2:
+[(X -> b.XaX), origin = 1]
+[(S -> aXb.X), origin = 0]
+[(X -> .aXbX), origin = 2]
+[(X -> .bXaX), origin = 2]
+[(X -> .$), origin = 2]
+[(X -> bX.aX), origin = 1]
+[(S -> aXbX.), origin = 0]
+[(# -> S.), origin = 0]
+
+Print state: 3:
+[(X -> b.XaX), origin = 2]
+[(X -> .aXbX), origin = 3]
+[(X -> .bXaX), origin = 3]
+[(X -> .$), origin = 3]
+[(X -> bX.aX), origin = 2]
+
+abb is REJECTED
 

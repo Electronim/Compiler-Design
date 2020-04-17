@@ -65,7 +65,8 @@ class Grammar {
         return it->second;
     }
 
-    friend ifstream& operator>> (ifstream&, Grammar&);
+    friend istream& operator>> (istream&, Grammar&);
+    friend ostream& operator<< (ostream&, const Grammar&);
 
 private:
     set <Production> splitProd(string productionText){
@@ -73,64 +74,75 @@ private:
         string expression;
         set <Production> productions;
         stringstream ls;
+
         ls.clear();
         ls.str(productionText);
+        
         ls >> nonTerminal;
         ls >> expression;
+        
         while (ls >> expression){
             if (expression == "|")
                 continue;
+
             Production prod;
             prod.left = nonTerminal;
             prod.right = expression;
             prod.isNullable = (expression == "$");
             productions.insert(prod);
         }
+
         return productions;
     }
 };
 
-ifstream& operator>> (ifstream& fin, Grammar& g){
+istream& operator>> (istream& in, Grammar& grammar){
     string alpha, nonTerms, productionText;
     int numberOfProductions;
 
-    fin >> alpha >> nonTerms >> g.startSymbol >> numberOfProductions;
-    fin.ignore();
+    in >> alpha >> nonTerms >> grammar.startSymbol >> numberOfProductions;
+    in.ignore();
 
     for (auto a: alpha)
-        g.alphabet.insert(a);
+        grammar.alphabet.insert(a);
+
     for (auto n: nonTerms){
-        g.nonterminals.insert(n);
+        grammar.nonterminals.insert(n);
     }
 
     for (int i = 0; i < numberOfProductions; i++){
-        getline(fin, productionText);
-        set < Production > newProductions = g.splitProd(productionText);
+        getline(in, productionText);
+        set < Production > newProductions = grammar.splitProd(productionText);
         
         for (auto p: newProductions){
-            g.productions.insert(p);
+            grammar.productions.insert(p);
         }
         
         for (auto it: newProductions) {
-            g.stateHelper[it.left].emplace_back(it);
+            grammar.stateHelper[it.left].emplace_back(it);
         }
     }
 
+    return in;
 }
 
-void printGrammar(Grammar g){
-    for (auto a: g.alphabet){
-        cout << a << " ";
+ostream& operator<< (ostream& out, const Grammar& grammar) {
+    for (auto a: grammar.alphabet){
+        out << a << " ";
     }
-    cout << endl;
-    for (auto n: g.nonterminals){
-        cout << n << " ";
+    out << "\n";
+
+    for (auto n: grammar.nonterminals){
+        out << n << " ";
     }
-    cout << endl;
-    cout << g.startSymbol << endl;
-    for (auto p: g.productions){
-        cout << p.left << " -> " << p.right << endl;
+    out << "\n";
+    
+    out << grammar.startSymbol << "\n";
+    for (auto p: grammar.productions){
+        out << p.left << " -> " << p.right << "\n";
     }
+
+    return out;
 }
 
 class State {
@@ -226,9 +238,10 @@ class EarleyParser {
  private:
     Grammar grammar;
     vector < set < State > > states;
+    vector < vector < State > > container;
     map < char, bool > isNullable;
     
-    void predict(State state, int origin, set < State >& stateContainer) {
+    void predict(State state, int origin) {
         char nonterminalElement = state.nextElement();
         vector < Production > productions = grammar.getProductions(nonterminalElement);
 
@@ -236,7 +249,8 @@ class EarleyParser {
             State newState(it, 0, origin);
 
             if (states[origin].find(newState) == states[origin].end()) {
-                stateContainer.insert(newState);
+                states[origin].insert(newState);
+                container[origin].emplace_back(newState);
             }
         }
     }
@@ -248,10 +262,13 @@ class EarleyParser {
 
         State newState(state);
         newState.setDotPosition(state.getDotPosition() + 1);
-        states[origin + 1].insert(newState);
+        if (states[origin + 1].find(newState) == states[origin + 1].end()) {
+            states[origin + 1].insert(newState);
+            container[origin + 1].emplace_back(newState);
+        }
     }
 
-    void complete(State state, int origin, set < State >& stateContainer) {
+    void complete(State state, int origin) {
         char stateNonterminal = state.getProduction().left;
         int stateOrigin = state.getOrigin();
 
@@ -263,13 +280,15 @@ class EarleyParser {
             State newState(it);
             newState.setDotPosition(it.getDotPosition() + 1);
             if (states[origin].find(newState) == states[origin].end()) {
-                stateContainer.insert(newState);
+                states[origin].insert(newState);
+                container[origin].emplace_back(newState);
             }
         }
     }
 
-    void handleLambda(int origin, set < State >& stateContainer) {
-        for (auto it: states[origin]) {
+    void handleLambda(int origin) {
+        for (int i = 0; i < container[origin].size(); i++) {
+            auto it = container[origin][i];
             if (it.finished() || (it.nextElement() != '$' && !it.isNonterminalElement(grammar))) {
                 continue;
             }
@@ -282,7 +301,8 @@ class EarleyParser {
             State newState(it);
             newState.setDotPosition(it.getDotPosition() + 1);
             if (states[origin].find(newState) == states[origin].end()) {
-                stateContainer.insert(newState);
+                states[origin].insert(newState);
+                container[origin].emplace_back(newState);
             }
         }
     }
@@ -293,37 +313,23 @@ class EarleyParser {
 
         State newState(Production('#', initial, 0));
         states[0].insert(newState);
+        container[0].emplace_back(newState);
 
         for (int k = 0; k <= word.size(); ++k) {
-            set < State > temp = states[k];
-            while (!temp.empty()) {
-                set < State > stateContainer;
-
-                for (auto it: temp) {
-                    set < State > tempContainer;
-
-                    if (it.finished()) {                            // if is finish state - complete
-                        complete(it, k, tempContainer);
-                    } else {
-                        if (it.isNonterminalElement(grammar)) {     // if is a nonterminal - predict
-                            predict(it, k, tempContainer);
-                        } else {                                    // if is a terminal - scan
-                            scan(it, k, word[k]);
-                        }
-                    }
-
-                    for (auto it2: tempContainer) {
-                        states[k].insert(it2);
-                        stateContainer.insert(it2);
+            for (int j = 0; j < container[k].size(); j++) {
+                auto it = container[k][j];
+                
+                if (it.finished()) {                            // if is finish state - complete
+                    complete(it, k);
+                } else {
+                    if (it.isNonterminalElement(grammar)) {     // if is a nonterminal - predict
+                        predict(it, k);
+                    } else {                                    // if is a terminal - scan
+                        scan(it, k, word[k]);
                     }
                 }
 
-                handleLambda(k, stateContainer);                    // check for nullable productions
-                for (auto it2: stateContainer) {
-                    states[k].insert(it2);
-                }
-
-                temp = stateContainer;
+                handleLambda(k);                                // check to apply nullable productions
             }
 
             printState(k);
@@ -333,7 +339,7 @@ class EarleyParser {
     void printState(int index) {
         fout << "Print state: ";
         fout << index << ":\n";
-        for (auto it: states[index]) {
+        for (auto it: container[index]) {
             fout << it << "\n";
         }
 
@@ -359,6 +365,7 @@ class EarleyParser {
 
     string accepts(string word) {
         states.resize(word.size() + 1);
+        container.resize(word.size() + 1);
         computeStates(word);
 
         string initial = "";
@@ -369,6 +376,7 @@ class EarleyParser {
             (states[word.size()].find(initialState) != states[word.size()].end() ? "ACCEPTED" : "REJECTED");
 
         states.clear();
+        container.clear();
         return result;
     }
 
@@ -382,7 +390,7 @@ class EarleyParser {
 int main() {
     Grammar G;
     fin >> G;
-    // printGrammar(G);
+    cout << G;
     
     string word;
     vector < string > words;

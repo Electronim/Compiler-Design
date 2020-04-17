@@ -1,11 +1,15 @@
-a
+ab
+SX
 S
-S
-1
-S -> Sa | $
-a
-aaa
-aaaaa
-aa
-aaaa
-abbb
+3
+S -> aXbX | bXaX
+X -> aXbX | bXaX
+X -> $
+ab
+abab
+ba
+aaabbb
+baab
+bbbb
+baba
+abb
