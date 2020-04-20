@@ -387,6 +387,12 @@ class EarleyParser {
     }
 };
 
+void validateWord(set < char > alphabet, string word){
+    for (auto c: word)
+        if (alphabet.find(c) == alphabet.end())
+            throw c;  
+}
+
 int main() {
     Grammar G;
     fin >> G;
@@ -395,7 +401,12 @@ int main() {
     string word;
     vector < string > words;
     while(fin >> word){
-        words.push_back(word);
+        try {
+            validateWord(G.alphabet, word);
+            words.push_back(word);
+        } catch (char c){
+            fout << "The input '" << word << "' does not satisfy the alphabet" << "\n\n"; 
+        }
     }
 
     EarleyParser earleyParser(G);
