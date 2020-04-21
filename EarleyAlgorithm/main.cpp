@@ -65,6 +65,14 @@ class Grammar {
         return it->second;
     }
 
+    void validateWord(string word){
+        for (auto c: word) {
+            if (alphabet.find(c) == alphabet.end()) {
+                throw c;
+            }
+        }
+    }
+
     friend istream& operator>> (istream&, Grammar&);
     friend ostream& operator<< (ostream&, const Grammar&);
 
@@ -387,12 +395,6 @@ class EarleyParser {
     }
 };
 
-void validateWord(set < char > alphabet, string word){
-    for (auto c: word)
-        if (alphabet.find(c) == alphabet.end())
-            throw c;  
-}
-
 int main() {
     Grammar G;
     fin >> G;
@@ -402,7 +404,7 @@ int main() {
     vector < string > words;
     while(fin >> word){
         try {
-            validateWord(G.alphabet, word);
+            G.validateWord(word);
             words.push_back(word);
         } catch (char c){
             fout << "The input '" << word << "' does not satisfy the alphabet" << "\n\n"; 
